@@ -1,11 +1,13 @@
-module.exports = {
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+module.exports = (env) => ({
   entry: [
     './src/index.js'
   ],
   output: {
     path: __dirname,
-	  publicPath: "/",
-    filename: 'bundle.js'
+    publicPath: "/",
+    filename: './build/bundle.js'
   },
   module: {
     rules: [{
@@ -14,14 +16,23 @@ module.exports = {
       test: /\.jsx?/
     }, {
       test: /\.css$/,
-      use: [
-        'style-loader',
-        'css-loader'
-      ]
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: {
+          loader: 'css-loader',
+          options: {
+            sourceMap: true
+          }
+        }
+      })
     }]
   },
+  plugins: [
+    new ExtractTextPlugin('./build/styles.css')
+  ],
+  devtool: env === 'production' ? 'source-map' : 'inline-source-map',
   devServer: {
     historyApiFallback: true,
     contentBase: './'
   }
-};
+});
