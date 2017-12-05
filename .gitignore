@@ -1,3 +1,7 @@
+# build files
+public/js
+public/css
+
 #Other Useless Files
 **/.DS_Store/**
 **/demos/**
