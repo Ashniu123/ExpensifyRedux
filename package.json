@@ -1,9 +1,9 @@
 {
-  "name": "react-simple-starter",
+  "name": "expensify-redux",
   "version": "1.0.0",
-  "description": "Simple starter code for ReactJS devs",
+  "description": "Expensify App to track Bill - Udemy React-Redux Course",
   "main": "index.js",
-  "repository": "git@github.com:Ashniu123/React_Simple_Starter.git",
+  "repository": "git@github.com:Ashniu123/ExpensifyRedux.git",
   "scripts": {
     "dev-server": "webpack-dev-server",
     "start": "node ./server/server.js",
@@ -43,5 +43,8 @@
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "uuid": "^3.1.0"
+  },
+  "engines": {
+    "node": "8.9.0"
   }
 }
