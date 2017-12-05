@@ -6,7 +6,7 @@
   "repository": "git@github.com:Ashniu123/React_Simple_Starter.git",
   "scripts": {
     "dev-server": "webpack-dev-server",
-    "start": "browser-sync start --server",
+    "start": "node ./server/server.js",
     "dev": "webpack",
     "build": "webpack -p --env production",
     "test": "jest --config=jest.config.json"
@@ -19,7 +19,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "browser-sync": "^2.18.13",
+    "babel-preset-stage-1": "^6.24.1",
     "css-loader": "^0.28.7",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
@@ -27,13 +27,12 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "jest": "^21.2.1",
     "raf": "^3.4.0",
-    "react-test-renderer": "^16.2.0",
     "style-loader": "^0.19.0",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.4"
   },
   "dependencies": {
-    "babel-preset-stage-1": "^6.24.1",
+    "express": "^4.16.2",
     "moment": "^2.19.2",
     "react": "^16.0.0",
     "react-addons-shallow-compare": "^15.6.2",

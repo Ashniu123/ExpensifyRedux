@@ -7,7 +7,7 @@ module.exports = (env) => ({
   output: {
     path: __dirname,
     publicPath: "/",
-    filename: './build/bundle.js'
+    filename: './public/js/bundle.js'
   },
   module: {
     rules: [{
@@ -28,7 +28,7 @@ module.exports = (env) => ({
     }]
   },
   plugins: [
-    new ExtractTextPlugin('./build/styles.css')
+    new ExtractTextPlugin('./public/css/styles.css')
   ],
   devtool: env === 'production' ? 'source-map' : 'inline-source-map',
   devServer: {
