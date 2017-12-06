@@ -5,6 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
 import AppRouter, { history } from './routes/app_routes';
+import LoadingPage from './components/loading_page';
 import reducers from './reducers';
 
 import { startSetExpenses } from './actions/expenses';
@@ -12,11 +13,11 @@ import { login, logout } from './actions/auth';
 
 import { firebase } from './firebase/firebase';
 
-import '../style/base-style.css';
+import '../style/styles.scss';
 
 const store = applyMiddleware(thunk)(createStore)(reducers); // create store with middleware
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById('root'));
+ReactDOM.render(<LoadingPage />, document.getElementById('root'));
 
 let hasRendered = false;
 const renderApp = () => {

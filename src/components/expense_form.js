@@ -72,19 +72,17 @@ class ExpenseForm extends Component {
 
     render() {
         return (
-            <div>
-                {this.state.error && <p>{this.state.error}</p>}
-                <form onSubmit={this.handleFormSubmit}>
-                    <input type="text" placeholder="Description" value={this.state.description} onChange={this.handleDescriptionChange} autoFocus />
-                    <input type="text" placeholder="Amount" value={this.state.amount} onChange={this.handleAmountChange} />
-                    <SingleDatePicker date={this.state.createdAt} onDateChange={this.handleDateChange}
-                        focused={this.state.calendarFocused} onFocusChange={this.handleFocusChange}
-                        numberOfMonths={1} isOutsideRange={(day) => false}
-                    />
-                    <textarea placeholder="Add a note...(optional)" value={this.state.note} onChange={this.handleNoteChange}></textarea>
-                    <input type="submit" value="Add" />
-                </form>
-            </div>
+            <form className="form" onSubmit={this.handleFormSubmit}>
+                {this.state.error && <p className="form__error">{this.state.error}</p>}
+                <input className="text-input" type="text" placeholder="Description" value={this.state.description} onChange={this.handleDescriptionChange} autoFocus />
+                <input className="text-input" type="text" placeholder="Amount" value={this.state.amount} onChange={this.handleAmountChange} />
+                <SingleDatePicker date={this.state.createdAt} onDateChange={this.handleDateChange}
+                    focused={this.state.calendarFocused} onFocusChange={this.handleFocusChange}
+                    numberOfMonths={1} isOutsideRange={(day) => false}
+                />
+                <textarea className="textarea" placeholder="Add a note for your expense...(optional)" value={this.state.note} onChange={this.handleNoteChange}></textarea>
+                <input className="button" type="submit" value="Save Expense" />
+            </form>
         );
     }
 }

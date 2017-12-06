@@ -11,15 +11,15 @@ export class ExpenseListFilters extends Component {
         super(props);
 
         this.state = {
-            calendarFocused: null    
-        }
+            calendarFocused: null
+        };
 
         this.handleSortByChange = this.handleSortByChange.bind(this);
         this.handleFocusChange = this.handleFocusChange.bind(this);
         this.handleDatesChange = this.handleDatesChange.bind(this);
         this.handleTextFilterChange = this.handleTextFilterChange.bind(this);
     }
-    
+
     handleSortByChange(e) {
         switch (e.target.value) {
             case "date": this.props.sortByDate();
@@ -36,7 +36,7 @@ export class ExpenseListFilters extends Component {
     }
 
     handleFocusChange(focused) {
-        this.setState({calendarFocused: focused});
+        this.setState({ calendarFocused: focused });
     }
 
     handleTextFilterChange(event) {
@@ -45,25 +45,33 @@ export class ExpenseListFilters extends Component {
 
     render() {
         return (
-            <div>
-                <input type="text" value={this.props.filter.text} onChange={this.handleTextFilterChange} />
-                <select value={this.props.filter.sortBy} onChange={this.handleSortByChange}>
-                    <option value="date">Date</option>
-                    <option value="amount">Amount</option>
-                </select>
-            <DateRangePicker 
-                startDate={this.props.filter.startDate}
-                endDate={this.props.filter.endDate}
-                onDatesChange={this.handleDatesChange}
-                focusedInput={this.state.calendarFocused}
-                onFocusChange={this.handleFocusChange}
-                numberOfMonths={1} isOutsideRange={(day)=>false}
-                showClearDates={true}
-            />
+            <div className="content-container">
+                <div className="input-group">
+                    <div className="input-group__item">
+                        <input className="text-input" type="text" placeholder="Search Expenses..." value={this.props.filter.text} onChange={this.handleTextFilterChange} />
+                    </div>
+                    <div className="input-group__item">
+                        <select className="select" value={this.props.filter.sortBy} onChange={this.handleSortByChange}>
+                            <option value="date">Date</option>
+                            <option value="amount">Amount</option>
+                        </select>
+                    </div>
+                    <div className="input-group__item">
+                        <DateRangePicker
+                            startDate={this.props.filter.startDate}
+                            endDate={this.props.filter.endDate}
+                            onDatesChange={this.handleDatesChange}
+                            focusedInput={this.state.calendarFocused}
+                            onFocusChange={this.handleFocusChange}
+                            numberOfMonths={1} isOutsideRange={(day) => false}
+                            showClearDates={true}
+                        />
+                    </div>
+                </div>
             </div>
         )
     }
-};
+}
 
 const mapStateToProps = (state) => {
     // console.log(state);
