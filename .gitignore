@@ -1,3 +1,6 @@
+# ENV config
+.env*
+
 # build files
 public/js
 public/css
