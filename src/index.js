@@ -7,13 +7,17 @@ import thunk from 'redux-thunk';
 import AppRouter from './routes/app_routes';
 import reducers from './reducers';
 
-import { addExpense } from './actions/expenses';
+import { startSetExpenses } from './actions/expenses';
 import { setTextFilter } from './actions/filters';
 
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+const store = applyMiddleware(thunk)(createStore)(reducers); // create store with middleware
 
-ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <AppRouter />
-  </Provider>
-  , document.getElementById("root"));
+ReactDOM.render(<p>Loading...</p>, document.getElementById('root'));
+
+store.dispatch(startSetExpenses()).then(() => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <AppRouter />
+    </Provider>
+    , document.getElementById("root"));  
+});
