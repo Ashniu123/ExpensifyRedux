@@ -15,7 +15,6 @@ module.exports = (env) => ({
   ],
   output: {
     path: __dirname,
-    publicPath: "/",
     filename: './public/js/bundle.js'
   },
   module: {
@@ -50,6 +49,7 @@ module.exports = (env) => ({
   devtool: env === 'production' ? 'source-map' : 'inline-source-map',
   devServer: {
     historyApiFallback: true,
-    contentBase: './public'
+    contentBase: './public',
+    publicPath: '/'
   }
 });
