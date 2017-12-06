@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 import database from '../../src/firebase/firebase';
-import { startAddExpense, addExpense, editExpense, removeExpense, setExpenses, startSetExpenses } from '../../src/actions/expenses';
+import { startAddExpense, addExpense, editExpense, removeExpense, startRemoveExpense, setExpenses, startSetExpenses, startEditExpense } from '../../src/actions/expenses';
 import expenses from '../fixtures/expenses';
 
 const createMockStore = configureMockStore([thunk]);
@@ -23,6 +23,24 @@ test('should setup removeExpense action object', () => {
     });
 });
 
+test('should remove expense from firebase and store', (done) => {
+    const store = createMockStore({});
+    const id = expenses[1].id;
+
+    store.dispatch(startRemoveExpense({ id })).then(() => {
+        const actions = store.getActions();
+        expect(actions[0]).toEqual({
+            type: 'REMOVE_EXPENSE',
+            id
+        });
+
+        return database.ref(`expenses/${id}`).once('value');
+    }).then((snapshot) => {
+        expect(snapshot.val()).toBeFalsy();
+        done();
+    });
+});
+
 test('should setup editExpense action object', () => {
     const action = editExpense('123abc', { note: 'New note value' });
     expect(action).toEqual({
@@ -31,6 +49,26 @@ test('should setup editExpense action object', () => {
         updates: {
             note: 'New note value'
         }
+    });
+});
+
+test('should update expense in firebase and store', (done) => {
+    const store = createMockStore({});
+    const { id } = expenses[1];
+    const updates = { note: 'New note value' };
+    
+    store.dispatch(startEditExpense(id, updates)).then(() => {
+        const actions = store.getActions();
+        expect(actions[0]).toEqual({
+            type: 'EDIT_EXPENSE',
+            id,
+            updates
+        });
+
+        return database.ref(`expenses/${id}`).once('value');
+    }).then((snapshot) => {
+        expect(snapshot.val().note).toBe(updates.note);
+        done();
     });
 });
 
