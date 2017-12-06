@@ -12,6 +12,8 @@ import { login, logout } from './actions/auth';
 
 import { firebase } from './firebase/firebase';
 
+import '../style/base-style.css';
+
 const store = applyMiddleware(thunk)(createStore)(reducers); // create store with middleware
 
 ReactDOM.render(<p>Loading...</p>, document.getElementById('root'));
