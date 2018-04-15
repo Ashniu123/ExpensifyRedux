@@ -12,10 +12,11 @@ import { startSetExpenses } from './actions/expenses';
 import { login, logout } from './actions/auth';
 
 import { firebase } from './firebase/firebase';
+import registerServiceWorker from './registerServiceWorker';
 
 import '../style/styles.scss';
 
-const store = applyMiddleware(thunk)(createStore)(reducers); // create store with middleware
+const store = createStore(reducers, applyMiddleware(thunk)); // create store with middleware
 
 ReactDOM.render(<LoadingPage />, document.getElementById('root'));
 
@@ -30,6 +31,8 @@ const renderApp = () => {
     hasRendered = true;
   }
 };
+
+registerServiceWorker();
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {

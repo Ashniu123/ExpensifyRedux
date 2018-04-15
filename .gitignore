@@ -2,8 +2,7 @@
 .env*
 
 # build files
-public/js
-public/css
+public/dist
 
 #Other Useless Files
 **/.DS_Store/**
