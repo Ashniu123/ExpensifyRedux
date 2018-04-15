@@ -18,8 +18,6 @@ import '../style/styles.scss';
 
 const store = createStore(reducers, applyMiddleware(thunk)); // create store with middleware
 
-ReactDOM.render(<LoadingPage />, document.getElementById('root'));
-
 let hasRendered = false;
 const renderApp = () => {
   if (!hasRendered) {
