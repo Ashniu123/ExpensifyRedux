@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="/images/favicon.ico">
-    <link rel="stylesheet" href="/dist/styles.css">
-  </head>
-  <body>
-    <div id="root">
-      <div class="loader">
-        <img class="loader__image" src="/images/loader.gif"/>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="stylesheet" href="/dist/styles.css">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117545929-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-117545929-2');
+  </script>
+
+</head>
+<body>
+  <noscript>
+    Javascript is required to view this website. 
+    Please enable Javascript or use a Javascript compliant browser like Chrome, Firefox.
+  </noscript>
+  <div id="root">
+    <div class="loader">
+      <img class="loader__image" src="/images/loader.gif" />
     </div>
-    </div>
-  </body>
-  <script src="/dist/bundle.js"></script>
+  </div>
+</body>
+<script src="/dist/bundle.js"></script>
 </html>
